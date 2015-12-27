@@ -15,7 +15,9 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 You will need the following packages installed:
 
 > dplyr
+
 > data.table
+
 > reshape2
 
 To run the script, type the following in R or RStudio:
