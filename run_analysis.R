@@ -1,4 +1,21 @@
-setwd("/Users/nuthouse/Documents/Coursera/Getting Cleaning Data/Course Project") 
+# run_analysis.R
+# Written by: Kirsten Petersen, 12/27/2015
+# Source: https://github.com/kiwim0n/GCD_CourseProject
+#
+# This R script takes a dataset of accelerometer and gyroscope measurements
+# from test subjects participating in various activities.
+# 
+# NOTE: the script assumes you have downloaded the data set and unzipped it into
+# the working directory, where the run_analysis.R script is also located.
+# The data can be downloaded here: 
+#   https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+# 
+# You can set the working directory in R with the setwd() command like this:
+# setwd("/Users/nuthouse/Documents/Coursera/Getting Cleaning Data/Course Project")
+#
+# The script produces an output file, tidy_output.txt, which contains a summary
+# of means of all mean and standard deviations measures by test subject and 
+# activity.
 
 # Set file locations for data set to import
 filetestsubject <- "./UCI HAR Dataset/test/subject_test.txt" 
@@ -40,10 +57,12 @@ mycolnamesnew <- make.names(mycolnames, unique = TRUE)
 names(fulldata)=mycolnamesnew
 
 # Using grep, create a subset of names that match the selection we want
+# We only want to select variables for standard deviation and mean
 mypattern <- "std\\.|mean\\.|activity|subject"
 mycolnamessubset <- grep(pattern=mypattern,mycolnamesnew,value=TRUE)
 
-# Subset the full dataset 
+# Subset the full dataset, selecting only variables for standard deviation 
+# and mean
 selectdata <- select(fulldata,one_of(mycolnamessubset))
 
 # Rename the activities with descriptions
