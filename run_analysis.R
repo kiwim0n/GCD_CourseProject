@@ -56,5 +56,17 @@ selectdata$activity[selectdata$activity == "4"] <- "Sitting"
 selectdata$activity[selectdata$activity == "5"] <- "Standing"
 selectdata$activity[selectdata$activity == "6"] <- "Laying"
 
+# Unfortunately, I did not have time to rename the variable names to
+# something more readable. Ideally abbreviations such as "mag" would be spelled
+# out, and duplicated dots would be removed.
 
+# Make the data tidy
+# First, melt the data so we can summarize by subject and activity
+df_melt <- melt(selectdata,id =c("subject","activity"))
+
+# Find the mean of all values by subject and activity
+mytidydata <- dcast(df_melt,subject+activity~variable,mean)
+
+# Print output
+write.table(mytidydata, "./tidy_output.txt", row.names=FALSE)
 
