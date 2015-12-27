@@ -17,6 +17,11 @@
 # of means of all mean and standard deviations measures by test subject and 
 # activity.
 
+# Load needed packages
+library(dplyr)
+library(plyr)
+library(data.table)
+
 # Set file locations for data set to import
 filetestsubject <- "./UCI HAR Dataset/test/subject_test.txt" 
 filetestx <- ".//UCI HAR Dataset/test/X_test.txt"
